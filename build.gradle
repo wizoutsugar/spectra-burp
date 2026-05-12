@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group = 'burp'
+version = '1.0.0'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+jar {
+    archiveBaseName = 'authmatrix'
+    manifest {
+        attributes 'Main-Class': 'burp.BurpExtender'
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
